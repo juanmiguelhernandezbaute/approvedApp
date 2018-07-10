@@ -3,7 +3,6 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../../services/authentication.service';
-import { Route } from '../../../../../../node_modules/@angular/compiler/src/core';
 
 @Component({
   selector: 'app-register',
@@ -31,12 +30,10 @@ export class RegisterComponent implements OnInit {
     }
   };
 
-  constructor(
-    private formBuilder: FormBuilder,
+  constructor(private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute) { }
 
   onValueChanged(data?: any) {
     if (!this.registerForm) {
@@ -62,19 +59,15 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      email: ['',
-        [
-          Validators.required,
-          Validators.email
-        ]
-      ],
-      password: ['',
-        [
-          Validators.required,
-          Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-          Validators.minLength(6)
-        ]
-      ]
+      email: ['', [
+        Validators.required,
+        Validators.email
+      ]],
+      password: ['', [
+        Validators.required,
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
+        Validators.minLength(6)
+      ]]
     });
 
     this.registerForm.valueChanges.subscribe(data => this.onValueChanged(data));
