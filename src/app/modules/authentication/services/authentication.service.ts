@@ -17,7 +17,7 @@ export class AuthenticationService {
       });
   }
 
-  initSession(userdata){
+  initSession(userdata) {
     firebase.auth().signInWithEmailAndPassword(userdata.email, userdata.password)
       .then(response => {
         console.log(response);
@@ -26,6 +26,19 @@ export class AuthenticationService {
       .catch(error => {
         console.log(error);
       });
+  }
+
+  isAuthenticated() {
+    const user = firebase.auth().currentUser;
+    if (user) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  logOut() {
+    firebase.auth().signOut();
   }
 
 }
