@@ -2,7 +2,7 @@
     <div class="col col-md"></div>
     <div class="col-10 col-md-6">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <h4>Introduzca sus datos</h4>
+        <h4 class="text-center">Inicio de sesión</h4>
         <label>Correo Electrónico</label>
         <input type="mail" class="form-control"
                id="inputEmail" autofocus
@@ -12,12 +12,11 @@
                id="inputPassword"
                formControlName="password">
         <hr>
-        <button type="submit" class="btn btn-primary"
-                [disabled]="!loginForm.valid">Iniciar sesión</button>
+        <button type="submit" class="btn btn-secondary float-right"> INICIAR SESIÓN </button>
       </form>
-      <p>Si no dispone de cuenta pulse <a routerLink="/register">aquí</a></p>
-      <p class="alert alert-danger" style="margin-top: 20px" *ngIf="message">
-        Usuario o contraseña incorrectos
+      <p>¿No tienes cuenta? <a routerLink="/register"> Regístrate </a></p>
+      <p class="alert alert-warning" style="margin-top: 20px" *ngIf="message">
+        Correo electrónico o contraseña incorrectos
       </p>
     </div>
     <div class="col col-md"></div>

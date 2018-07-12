@@ -2,26 +2,26 @@
   <div class="col col-md"></div>
   <div class="col-10 col-md-6">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <h4>Introduzca sus datos de registro</h4>
+      <h4 class="text-center">Registro de usuarios</h4>
       <label>Correo Electrónico</label>
       <input type="mail" class="form-control"
              id="inputEmail" autofocus
              formControlName="email">
-      <p  class="alert alert-danger" *ngIf="errorsForm.email">
+      <p  class="alert alert-light" *ngIf="errorsForm.email">
         {{ errorsForm.email }}
       </p>
       <label>Contraseña</label>
       <input type="password" class="form-control"
              id="inputPassword"
              formControlName="password">
-      <p  class="alert alert-danger" *ngIf="errorsForm.password">
+      <p  class="alert alert-light" *ngIf="errorsForm.password">
         {{ errorsForm.password }}
       </p>
       <hr>
-      <button type="submit" class="btn btn-primary"
-              [disabled]="!registerForm.valid">Registrar</button>
+      <button type="submit" class="btn btn-secondary float-right"
+              [disabled]="!registerForm.valid"> REGISTRARTE </button>
     </form>
-    <p>Si ya dispone de cuenta pulse <a routerLink="/login"> aquí </a></p>
+    <p>¿Ya tienes cuenta? <a routerLink="/login"> Entrar </a></p>
   </div>
   <div class="col col-md"></div>
 </div>

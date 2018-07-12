@@ -22,7 +22,7 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     this.authenticationService.logOut();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/login']);
   }
 
 }

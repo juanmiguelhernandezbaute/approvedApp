@@ -6,10 +6,10 @@ import { LoginComponent } from './modules/authentication/components/login/login.
 import { GuardService } from './modules/authentication/services/guard.service';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent, canActivate: [GuardService] },
-  { path: 'register', component: RegisterComponent },
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
-  { path: '**', component: HomeComponent }
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent, canActivate: [GuardService] }
 ];
 
 @NgModule({
