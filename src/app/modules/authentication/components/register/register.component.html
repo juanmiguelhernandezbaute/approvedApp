@@ -7,14 +7,14 @@
       <input type="mail" class="form-control"
              id="inputEmail" autofocus
              formControlName="email">
-      <p  class="alert alert-light" *ngIf="errorsForm.email">
+      <p  class="alert alert-warning" *ngIf="errorsForm.email">
         {{ errorsForm.email }}
       </p>
       <label>Contraseña</label>
       <input type="password" class="form-control"
              id="inputPassword"
              formControlName="password">
-      <p  class="alert alert-light" *ngIf="errorsForm.password">
+      <p  class="alert alert-warning" *ngIf="errorsForm.password">
         {{ errorsForm.password }}
       </p>
       <hr>
