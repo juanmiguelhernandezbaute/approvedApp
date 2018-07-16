@@ -10,12 +10,14 @@ import { HeaderComponent } from './common/components/header/header.component';
 import { HomeComponent } from './common/components/home/home.component';
 
 import { AuthenticationService } from './modules/authentication/services/authentication.service';
+import { ErrorPageComponent } from './common/components/error-page/error-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
