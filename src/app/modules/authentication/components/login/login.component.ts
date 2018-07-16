@@ -27,11 +27,9 @@ export class LoginComponent implements OnInit {
         Validators.required,
         Validators.email
       ]],
-      password: ['', [
-        Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-        Validators.minLength(6)
-      ]]
+      password: ['',
+        Validators.required
+      ]
     });
   }
 

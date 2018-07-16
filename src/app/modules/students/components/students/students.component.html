@@ -1,1 +1,24 @@
-
+<h3>Listado de Alumnos</h3>
+<a class="btn btn-primary float-md-right" routerLink="/addStudent">Añadir nuevo alumno</a>
+<table class="table table-bordered table-striped" style="margin-top: 40px;">
+  <thead>
+    <tr class="filters">
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Correo electrónico</th>
+      <th>Curso</th>
+      <th>Editar</th>
+      <th>Eliminar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students">
+      <td>{{ student.firstName }}</td>
+      <td>{{ student.lastName }}</td>
+      <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
+      <td>{{ student.course }}</td>
+      <td><button type="button" class="btn btn-success" routerLink="/editStudent/{{ student.id$ }}">Editar</button></td>
+      <td><button type="button" class="btn btn-danger" (click)="deleteStudent(student.id$)">Eliminar</button></td>
+    </tr>
+  </tbody>
+</table>

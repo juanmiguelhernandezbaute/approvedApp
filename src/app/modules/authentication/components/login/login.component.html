@@ -5,18 +5,18 @@
         <h4 class="text-center">Inicio de sesión</h4>
         <label>Correo Electrónico</label>
         <i class="fa fa-check-circle check" *ngIf="loginForm.controls.email.valid"></i>
-        <i class="fa fa-exclamation-circle uncheck" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched"></i>
+        <!-- <i class="fa fa-exclamation-circle uncheck" *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched"></i> -->
         <input type="mail" class="form-control"
                id="inputEmail" autofocus
                formControlName="email">
         <label>Contraseña</label>
         <i class="fa fa-check-circle check" *ngIf="loginForm.controls.password.valid"></i>
-        <i class="fa fa-exclamation-circle uncheck" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched"></i>
+        <!-- <i class="fa fa-exclamation-circle uncheck" *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched"></i> -->
         <input type="password" class="form-control"
                id="inputPassword"
                formControlName="password">
         <hr>
-        <button type="submit" class="btn btn-secondary float-right"> INICIAR SESIÓN </button>
+        <button type="submit" class="btn btn-success float-right" [disabled]="!loginForm.valid"> INICIAR SESIÓN </button>
       </form>
       <p>¿No tienes cuenta? <a routerLink="/register"> Regístrate </a></p>
       <p class="alert alert-warning" style="margin-top: 20px" *ngIf="message">

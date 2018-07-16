@@ -14,7 +14,7 @@ export class AddStudentComponent implements OnInit {
   student: any;
 
   constructor(private sf: FormBuilder,
-              private studentService: StudentsService) { }
+              private studentsService: StudentsService) { }
 
   ngOnInit() {
     this.studentForm = this.sf.group({
@@ -25,12 +25,13 @@ export class AddStudentComponent implements OnInit {
     });
   }
 
-  onSubmit(){
+  onSubmit() {
     this.student = this.saveStudent();
-    this.studentService.postStudent(this.student)
+    this.studentsService.postStudent(this.student)
       .subscribe(newStudent => {
 
       });
+    this.studentForm.reset();
   }
 
   saveStudent() {
@@ -42,4 +43,5 @@ export class AddStudentComponent implements OnInit {
     };
     return saveStudent;
   }
+
 }

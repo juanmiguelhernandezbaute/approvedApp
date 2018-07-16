@@ -1,7 +1,8 @@
 <div class="row">
-    <div class="col col-md"></div>
+  <div class="col col-md"></div>
     <div class="col-10 col-md-8">
       <h2>Añadir nuevo alumno</h2>
+      <a class="btn btn-primary float-md-right" routerLink="/students">Regresar al listado</a>
       <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <label for="firstName">Nombre </label>
@@ -33,8 +34,9 @@
           </select>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="!studentForm.valid">Añadir alumno</button>
+        <a class="btn btn-danger" routerLink="/students">Cancelar</a>
         <p class="alert alert-danger" *ngIf="!studentForm.valid"></p>
       </form>
     </div>
-    <div class="col col-md"></div>
-  </div>
+  <div class="col col-md"></div>
+</div>
