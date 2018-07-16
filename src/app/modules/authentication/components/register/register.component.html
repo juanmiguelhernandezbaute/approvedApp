@@ -4,8 +4,8 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <h4 class="text-center">Registro de usuarios</h4>
       <label>Correo Electrónico</label>
-      <i class="fa fa-check-circle check" *ngIf="registerForm.controls.email.valid"></i>
-      <i class="fa fa-exclamation-circle uncheck" *ngIf="registerForm.controls.email.invalid && registerForm.controls.email.touched"></i>
+      <i class="fa fa-check-circle check" *ngIf="registerForm.controls['email'].valid"></i>
+      <i class="fa fa-exclamation-circle uncheck" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched"></i>
       <input type="mail" class="form-control"
              id="inputEmail" autofocus
              formControlName="email">
@@ -13,8 +13,8 @@
         {{ errorsForm.email }}
       </p>
       <label>Contraseña</label>
-      <i class="fa fa-check-circle check" *ngIf="registerForm.controls.password.valid"></i>
-      <i class="fa fa-exclamation-circle uncheck" *ngIf="registerForm.controls.password.invalid && registerForm.controls.password.touched"></i>
+      <i class="fa fa-check-circle check" *ngIf="registerForm.controls['password'].valid"></i>
+      <i class="fa fa-exclamation-circle uncheck" *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched"></i>
       <input type="password" class="form-control"
              id="inputPassword"
              formControlName="password">
