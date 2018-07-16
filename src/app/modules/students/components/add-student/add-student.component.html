@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col col-md"></div>
+    <div class="col-10 col-md-8">
+      <h2>Añadir nuevo alumno</h2>
+      <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="firstName">Nombre </label>
+          <i class="fa fa-check-circle check" *ngIf="studentForm.controls.firstName.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="studentForm.controls.firstName.invalid && studentForm.controls.firstName.touched"></i>
+          <input type="text" class="form-control" id="firstName" formControlName="firstName">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Apellidos</label>
+          <i class="fa fa-check-circle check" *ngIf="studentForm.controls.lastName.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="studentForm.controls.lastName.invalid && studentForm.controls.lastName.touched"></i>
+          <input type="text" class="form-control" id="lastName" formControlName="lastName">
+        </div>
+        <div class="form-group">
+          <label for="email">Correo electrónico</label>
+          <i class="fa fa-check-circle check" *ngIf="studentForm.controls.email.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="studentForm.controls.email.invalid && studentForm.controls.email.touched"></i>
+          <input type="text" class="form-control" id="email" formControlName="email">
+        </div>
+        <div class="form-group">
+          <label for="course">Curso</label>
+          <i class="fa fa-check-circle check" *ngIf="studentForm.controls.course.valid"></i>
+          <i class="fa fa-exclamation-circle uncheck" *ngIf="studentForm.controls.course.invalid && studentForm.controls.course.touched"></i>
+          <select class="form-control" id="course" formControlName="course">
+            <option value="">Seleccione...</option>
+            <option value="curso1">Curso1</option>
+            <option value="curso2">Curso2</option>
+            <option value="curso3">Curso3</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!studentForm.valid">Añadir alumno</button>
+        <p class="alert alert-danger" *ngIf="!studentForm.valid"></p>
+      </form>
+    </div>
+    <div class="col col-md"></div>
+  </div>
