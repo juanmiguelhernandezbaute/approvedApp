@@ -1,30 +1,60 @@
-<h3>Listado de Alumnos<i class="fas fa-user-graduate ml-2"></i></h3>
+<h3>Listado de Alumnos
+  <i class="fas fa-user-graduate ml-2"></i>
+</h3>
 <a class="btn btn-outline-primary mt-4 mb-2" routerLink="/addStudent">
   <i class="fas fa-plus-circle"></i>
   Añadir
 </a>
 <div class="table-responsive">
-<table class="table table-striped">
-  <thead class="thead-dark">
-    <tr class="filters">
-      <th scope="col">Nombre</th>
-      <th scope="col">Apellidos</th>
-      <th scope="col">Correo electrónico</th>
-      <th scope="col">Curso</th>
-      <th style="width: 125px;"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let student of students">
-      <td scope="row">{{ student.firstName }}</td>
-      <td>{{ student.lastName }}</td>
-      <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
-      <td>{{ student.course }}</td>
-      <td>
-        <a class="btn btn-light m-1" style="width: 40px;" routerLink="/editStudent/{{ student.id$ }}"><i class="fas fa-edit"></i></a>
-        <a class="btn btn-light m-1" style="width: 40px;" routerLink="/students" (click)="deleteStudent(student.id$)"><i class="fas fa-trash-alt"></i></a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr class="filters">
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellidos</th>
+        <th scope="col">Correo electrónico</th>
+        <th scope="col">Curso</th>
+        <th style="width: 125px;"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td scope="row">{{ student.firstName }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>
+          <a href="mailto:{{ student.email }}">{{ student.email }}</a>
+        </td>
+        <td>{{ student.course }}</td>
+        <td>
+          <a class="btn btn-light m-1" style="width: 40px;" routerLink="/editStudent/{{ student.id$ }}">
+            <i class="fas fa-edit" alt="Editar"></i>
+          </a>
+          <a class="btn btn-light m-1" style="width: 40px;" data-toggle="modal" data-target="#delStudentModal">
+            <i class="fas fa-trash-alt" alt="Eliminar"></i>
+          </a>
+        </td>
+
+        <!-- Modal -->
+        <div class="modal fade" id="delStudentModal" tabindex="-1" role="dialog" aria-labelledby="delStudentModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="delStudentModalLabel"> Eliminación de alumnos </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body text-center">
+                ¿Está seguro que desea eliminar el alumno?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteStudent(student.id$)">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </tr>
+    </tbody>
+  </table>
 </div>

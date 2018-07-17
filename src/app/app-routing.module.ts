@@ -13,11 +13,10 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  // { path: 'home', component: HomeComponent, canActivate: [GuardService] },
-  { path: 'home', component: HomeComponent },
-  { path: 'students', component: StudentsComponent },
-  { path: 'addStudent', component: AddStudentComponent },
-  { path: 'editStudent/:id', component: EditStudentComponent },
+  { path: 'home', component: HomeComponent, canActivate: [GuardService] },
+  { path: 'students', component: StudentsComponent, canActivate: [GuardService] },
+  { path: 'addStudent', component: AddStudentComponent, canActivate: [GuardService] },
+  { path: 'editStudent/:id', component: EditStudentComponent, canActivate: [GuardService] },
   { path: 'notfound', component: ErrorPageComponent },
   { path: '**', redirectTo: 'notfound' }
 ];

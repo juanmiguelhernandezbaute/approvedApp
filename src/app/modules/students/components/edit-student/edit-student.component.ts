@@ -40,7 +40,7 @@ export class EditStudentComponent implements OnInit {
       this.student = this.saveStudent();
       this.studentsService.putStudent(this.student, this.id)
         .subscribe(newStudent => {
-          this.router.navigate(['students']);
+
         });
       this.studentForm.reset();
     }
