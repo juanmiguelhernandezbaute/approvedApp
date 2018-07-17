@@ -13,13 +13,13 @@
       <ul class="navbar-nav mr-auto w-100 justify-content-end">
         <li class="nav-item" routerLinkActive="active"
             [routerLinkActiveOptions]="{exact:true}" *ngIf="isAuth()">
-            <a class="nav-link" routerLink="/home">Inicio</a>
+            <a class="nav-link" routerLink="/home"><i class="fas fa-home mr-1"></i>Inicio</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="isAuth()">
-            <a class="nav-link" routerLink="/students">Alumnos</a>
+            <a class="nav-link" routerLink="/students"><i class="fas fa-user-graduate mr-1"></i>Alumnos</a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="isAuth()">
-            <a class="nav-link" (click)="onLogout()">Cerrar sesión</a>
+            <a class="nav-link" routerLink="/login" (click)="onLogout()"><i class="fas fa-sign-out-alt mr-1"></i>Cerrar sesión</a>
         </li>
       </ul>
     </div>

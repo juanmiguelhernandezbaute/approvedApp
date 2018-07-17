@@ -20,7 +20,7 @@ export class AddStudentComponent implements OnInit {
     this.studentForm = this.sf.group({
       firstName: ['', Validators.required ],
       lastName: ['', Validators.required ],
-      email: ['', Validators.email ],
+      email: ['', [Validators.required, Validators.email] ],
       course: ['', Validators.required ]
     });
   }

@@ -1,25 +1,30 @@
-<h3>Listado de Alumnos</h3>
-<a routerLink="/addStudent"><i class="far fa-plus-square fa-2x float-md-right"></i></a>
-
-<table class="table table-bordered table-striped" style="margin-top: 40px;">
-  <thead>
+<h3>Listado de Alumnos<i class="fas fa-user-graduate ml-2"></i></h3>
+<a class="btn btn-outline-primary mt-4 mb-2" routerLink="/addStudent">
+  <i class="fas fa-plus-circle"></i>
+  Añadir
+</a>
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead class="thead-dark">
     <tr class="filters">
-      <th>Nombre</th>
-      <th>Apellidos</th>
-      <th>Correo electrónico</th>
-      <th>Curso</th>
-      <th>Editar</th>
-      <th>Eliminar</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellidos</th>
+      <th scope="col">Correo electrónico</th>
+      <th scope="col">Curso</th>
+      <th style="width: 125px;"></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let student of students">
-      <td>{{ student.firstName }}</td>
+      <td scope="row">{{ student.firstName }}</td>
       <td>{{ student.lastName }}</td>
       <td><a href="mailto:{{ student.email }}">{{ student.email }}</a></td>
       <td>{{ student.course }}</td>
-      <td><a routerLink="/editStudent/{{ student.id$ }}"><i class="fas fa-edit fa-2x"></i></a></td>
-      <td><a (click)="deleteStudent(student.id$)"><i class="fas fa-trash-alt fa-2x"></i></a></td>
+      <td>
+        <a class="btn btn-light m-1" style="width: 40px;" routerLink="/editStudent/{{ student.id$ }}"><i class="fas fa-edit"></i></a>
+        <a class="btn btn-light m-1" style="width: 40px;" routerLink="/students" (click)="deleteStudent(student.id$)"><i class="fas fa-trash-alt"></i></a>
+      </td>
     </tr>
   </tbody>
 </table>
+</div>
