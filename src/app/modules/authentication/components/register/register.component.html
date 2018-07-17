@@ -2,30 +2,42 @@
   <div class="col col-md"></div>
   <div class="col-10 col-md-6">
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-      <h4 class="text-center">Registro de usuarios</h4>
-      <label>Correo Electrónico</label>
-      <i class="fa fa-check-circle check" *ngIf="registerForm.controls['email'].valid"></i>
-      <i class="fa fa-exclamation-circle uncheck" *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched"></i>
-      <input type="mail" class="form-control"
+      <h4 class="text-center"> Registro de usuarios </h4>
+      <label> Correo Electrónico </label>
+      <i class="fa fa-check-circle check"
+         *ngIf="registerForm.controls['email'].valid">
+      </i>
+      <i class="fa fa-exclamation-circle uncheck"
+         *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched">
+      </i>
+      <input type="mail" class="form-control mb-2"
              id="inputEmail" autofocus
              formControlName="email">
-      <p  class="alert alert-warning" *ngIf="errorsForm.email">
+      <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert" *ngIf="errorsForm.email">
         {{ errorsForm.email }}
-      </p>
-      <label>Contraseña</label>
-      <i class="fa fa-check-circle check" *ngIf="registerForm.controls['password'].valid"></i>
-      <i class="fa fa-exclamation-circle uncheck" *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched"></i>
-      <input type="password" class="form-control"
-             id="inputPassword"
-             formControlName="password">
-      <p  class="alert alert-warning" *ngIf="errorsForm.password">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <label> Contraseña </label>
+      <i class="fa fa-check-circle check"
+         *ngIf="registerForm.controls['password'].valid">
+      </i>
+      <i class="fa fa-exclamation-circle uncheck"
+         *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched">
+      </i>
+      <input type="password" class="form-control" id="inputPassword" formControlName="password">
+      <div class="alert alert-warning alert-dismissible fade show mt-2" role="alert" *ngIf="errorsForm.password">
         {{ errorsForm.password }}
-      </p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <hr>
-      <button type="submit" class="btn btn-secondary float-right"
-              [disabled]="!registerForm.valid"> REGISTRARTE </button>
+      <button type="submit" class="btn btn-success w-100"
+              [disabled]="!registerForm.valid"> REGISTRARSE </button>
     </form>
-    <p>¿Ya tienes cuenta? <a routerLink="/login"> Entrar </a></p>
+    <p> ¿Ya tienes cuenta? <a routerLink="/login"> Entrar </a></p>
   </div>
   <div class="col col-md"></div>
 </div>

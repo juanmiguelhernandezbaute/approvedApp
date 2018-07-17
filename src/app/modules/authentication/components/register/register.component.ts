@@ -20,13 +20,14 @@ export class RegisterComponent implements OnInit {
 
   validationMessages = {
     email: {
-      required: 'Email obligatorio',
-      email: 'Introduzca un email correcto'
+      required: 'Correo obligatorio',
+      email: 'Introduzca un correo electrónico correcto'
     },
     password: {
       required: 'Contraseña obligatoria',
-      pattern: 'La contraseña debe contener al menos un número y una letra',
-      minlength: 'La contraseña debe contener más de 6 caracteres'
+      pattern: 'La contraseña debe contener al menos un número, una letra mayúscula, una letra minúscula y un caracter especial'
+        + '(Caracteres especiales permitidos "@ $ ! % * ? & .").\n',
+      minlength: 'La contraseña debe contener más de 8 caracteres.\n'
     }
   };
 
@@ -65,8 +66,8 @@ export class RegisterComponent implements OnInit {
       ]],
       password: ['', [
         Validators.required,
-        Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$'),
-        Validators.minLength(6)
+        Validators.pattern('^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([a-zA-Z0-9\d$@$!%*?&.]+)$'),
+        Validators.minLength(8)
       ]]
     });
 

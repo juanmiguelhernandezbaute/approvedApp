@@ -23,10 +23,9 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
-      email: ['', [
-        Validators.required,
-        Validators.email
-      ]],
+      email: ['',
+        Validators.required
+      ],
       password: ['',
         Validators.required
       ]
@@ -34,6 +33,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.message = false;
     this.userdata = this.saveUserdata();
     this.authenticationService.initSession(this.userdata);
     setTimeout(() => {
