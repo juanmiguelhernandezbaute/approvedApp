@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+.logo-icon {
+  color: rgb(53, 192, 123);
+}
+
+.text-shadow {
+  text-shadow: 3px 3px 16px black;
+}
