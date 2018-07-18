@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { DataTableModule } from 'angular-6-datatable';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
@@ -27,6 +28,7 @@ import { StudentsService } from './modules/students/services/students.service';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
+    DataTableModule,
     AppRoutingModule,
     AuthenticationModule,
     StudentsModule
