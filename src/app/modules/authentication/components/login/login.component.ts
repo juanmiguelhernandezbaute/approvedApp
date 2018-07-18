@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   userdata: any;
 
   message = false;
+  authenticating = false;
 
   constructor(private formBuilder: FormBuilder,
               private authenticationService: AuthenticationService,
@@ -33,12 +34,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    this.authenticating = true;
     this.message = false;
     this.userdata = this.saveUserdata();
     this.authenticationService.initSession(this.userdata);
     setTimeout(() => {
       if (this.isAuth() === false) {
         this.message = true;
+        this.authenticating = false;
       }
     }, 2000);
   }

@@ -1,11 +1,14 @@
 <h3>Listado de Alumnos
   <i class="fas fa-user-graduate ml-2"></i>
 </h3>
-<a class="btn btn-outline-primary mt-4 mb-2" routerLink="/addStudent">
-  <i class="fas fa-plus-circle"></i>
-  Añadir
-</a>
-<div class="table-responsive">
+<div *ngIf="loading" class="text-center" style="padding-top: 60px;">
+  <i class="fas fa-circle-notch fa-spin fa-3x"></i>
+</div>
+<div class="table-responsive" *ngIf="!loading">
+  <a class="btn btn-outline-primary mt-4 mb-2" routerLink="/addStudent">
+    <i class="fas fa-plus-circle"></i>
+    Añadir
+  </a>
   <table class="table table-striped">
     <thead class="thead-dark">
       <tr class="filters">

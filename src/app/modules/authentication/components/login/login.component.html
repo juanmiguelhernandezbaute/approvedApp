@@ -12,7 +12,8 @@
                id="inputPassword"
                formControlName="password">
         <hr>
-        <button type="submit" class="btn btn-success w-100 float-right" [disabled]="!loginForm.valid"> INICIAR SESIÓN </button>
+        <button type="submit" class="btn btn-success w-100 float-right" [disabled]="!loginForm.valid" *ngIf="!authenticating"> INICIAR SESIÓN </button>
+        <button type="submit" class="btn btn-success w-100 float-right" *ngIf="authenticating"> <i class="fas fa-circle-notch fa-spin mr-2"></i> AUTENTICANDO USUARIO ... </button>
       </form>
       <p> ¿No tienes cuenta? <a routerLink="/register"> Regístrate </a></p>
       <div class="alert alert-warning alert-dismissible fade show mt-4" role="alert" *ngIf="message">

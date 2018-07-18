@@ -9,6 +9,7 @@ import { StudentsService } from '../../services/students.service';
 export class StudentsComponent implements OnInit {
 
   students: any[] = [];
+  loading = true;
 
   constructor(private studentsService: StudentsService) {
     this.studentsService.getStudents()
@@ -18,6 +19,7 @@ export class StudentsComponent implements OnInit {
           s.id$ = id$;
           this.students.push(students[id$]);
         }
+        this.loading = false;
       });
    }
 
