@@ -11,6 +11,8 @@ export class StudentsComponent implements OnInit {
   students: any[] = [];
   loading = true;
 
+  studentSelected: any;
+
   constructor(private studentsService: StudentsService) {
     this.studentsService.getStudents()
       .subscribe(students => {
@@ -26,8 +28,12 @@ export class StudentsComponent implements OnInit {
   ngOnInit() {
   }
 
-  deleteStudent(id$) {
-    this.studentsService.delStudent(id$)
+  selectStudent(id$) {
+    this.studentSelected = id$;
+  }
+
+  deleteStudent() {
+    this.studentsService.delStudent(this.studentSelected)
       .subscribe( response => {
         this.students = [];
         this.studentsService.getStudents()

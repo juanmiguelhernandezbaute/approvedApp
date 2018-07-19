@@ -7,6 +7,7 @@ import { DataTableModule } from 'angular-6-datatable';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from './modules/authentication/authentication.module';
 import { StudentsModule } from './modules/students/students.module';
+import { CoursesModule } from './modules/courses/courses.module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './common/components/header/header.component';
@@ -15,6 +16,8 @@ import { HomeComponent } from './common/components/home/home.component';
 
 import { AuthenticationService } from './modules/authentication/services/authentication.service';
 import { StudentsService } from './modules/students/services/students.service';
+import { CoursesService } from './modules/courses/services/courses.service';
+
 
 @NgModule({
   declarations: [
@@ -31,9 +34,16 @@ import { StudentsService } from './modules/students/services/students.service';
     DataTableModule,
     AppRoutingModule,
     AuthenticationModule,
-    StudentsModule
+    StudentsModule,
+    CoursesModule
   ],
-  providers: [AuthenticationService, StudentsService],
-  bootstrap: [AppComponent]
+  providers: [
+    AuthenticationService,
+    StudentsService,
+    CoursesService
+  ],
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

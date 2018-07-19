@@ -8,6 +8,9 @@ import { ErrorPageComponent } from './common/components/error-page/error-page.co
 import { StudentsComponent } from './modules/students/components/students/students.component';
 import { AddStudentComponent } from './modules/students/components/add-student/add-student.component';
 import { EditStudentComponent } from './modules/students/components/edit-student/edit-student.component';
+import { CoursesComponent } from './modules/courses/components/courses/courses.component';
+import { AddCourseComponent } from './modules/courses/components/add-course/add-course.component';
+import { EditCourseComponent } from './modules/courses/components/edit-course/edit-course.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -17,6 +20,9 @@ const routes: Routes = [
   { path: 'students', component: StudentsComponent, canActivate: [GuardService] },
   { path: 'addStudent', component: AddStudentComponent, canActivate: [GuardService] },
   { path: 'editStudent/:id', component: EditStudentComponent, canActivate: [GuardService] },
+  { path: 'courses', component: CoursesComponent, canActivate: [GuardService] },
+  { path: 'addCourse', component: AddCourseComponent, canActivate: [GuardService] },
+  { path: 'editCourse/:id', component: EditCourseComponent, canActivate: [GuardService] },
   { path: 'notfound', component: ErrorPageComponent },
   { path: '**', redirectTo: 'notfound' }
 ];
