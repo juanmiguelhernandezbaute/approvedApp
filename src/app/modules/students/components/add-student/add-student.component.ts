@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { StudentsService } from '../../services/students.service';
+import { CoursesService } from '../../../courses/services/courses.service';
 
 @Component({
   selector: 'app-add-student',
@@ -12,16 +13,28 @@ export class AddStudentComponent implements OnInit {
 
   studentForm: FormGroup;
   student: any;
+  courses: any[] = [];
 
   constructor(private sf: FormBuilder,
-              private studentsService: StudentsService) { }
+    private studentsService: StudentsService,
+    private coursesService: CoursesService) {
+
+    this.coursesService.getCourses()
+      .subscribe(courses => {
+        for (const id$ of Object.keys(courses)) {
+          const s = courses[id$];
+          s.id$ = id$;
+          this.courses.push(courses[id$]);
+        }
+      });
+  }
 
   ngOnInit() {
     this.studentForm = this.sf.group({
-      firstName: ['', Validators.required ],
-      lastName: ['', Validators.required ],
-      email: ['', [Validators.required, Validators.email] ],
-      course: ['', Validators.required ]
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      courseId: ['', Validators.required]
     });
   }
 
@@ -39,7 +52,7 @@ export class AddStudentComponent implements OnInit {
       firstName: this.studentForm.get('firstName').value,
       lastName: this.studentForm.get('lastName').value,
       email: this.studentForm.get('email').value,
-      course: this.studentForm.get('course').value
+      courseId: this.studentForm.get('courseId').value
     };
     return saveStudent;
   }

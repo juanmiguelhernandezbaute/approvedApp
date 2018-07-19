@@ -22,14 +22,12 @@
         <input type="text" class="form-control" id="email" formControlName="email" [(ngModel)]="student.email">
       </div>
       <div class="form-group">
-        <label for="course">Curso</label>
-        <i class="fa fa-check-circle check ml-1" *ngIf="studentForm.controls['course'].valid"></i>
-        <i class="fa fa-exclamation-circle uncheck ml-1" *ngIf="studentForm.controls['course'].invalid && studentForm.controls['course'].touched"></i>
-        <select class="form-control" id="course" formControlName="course" [(ngModel)]="student.course">
+        <label for="courseId">Curso</label>
+        <i class="fa fa-check-circle check ml-1" *ngIf="studentForm.controls['courseId'].valid"></i>
+        <i class="fa fa-exclamation-circle uncheck ml-1" *ngIf="studentForm.controls['courseId'].invalid && studentForm.controls['courseId'].touched"></i>
+        <select class="form-control" id="courseId" formControlName="courseId" [(ngModel)]="student.courseId">
           <option value="">Seleccione...</option>
-          <option value="curso1">Curso1</option>
-          <option value="curso2">Curso2</option>
-          <option value="curso3">Curso3</option>
+          <option *ngFor="let course of courses" value="{{ course.id$ }} ">{{ course.number }} {{ course.type }} {{ course.name }}</option>
         </select>
       </div>
       <div class="text-right">

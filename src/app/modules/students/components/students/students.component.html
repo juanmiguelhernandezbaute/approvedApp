@@ -12,19 +12,19 @@
   <table class="table table-striped" [mfData]="students" #mf="mfDataTable" [mfRowsOnPage]="5">
     <thead class="thead-dark">
       <tr class="filters">
-        <th style="width: 20%">
+        <th>
           <mfDefaultSorter by="firstName">Nombre</mfDefaultSorter>
         </th>
-        <th style="width: 20%">
+        <th>
           <mfDefaultSorter by="lastName">Apellidos</mfDefaultSorter>
         </th>
-        <th style="width: 20%">
+        <th>
           <mfDefaultSorter by="email">Correo electrónico</mfDefaultSorter>
         </th>
-        <th style="width: 20%">
-          <mfDefaultSorter by="course">Curso</mfDefaultSorter>
+        <th>
+          <mfDefaultSorter by="courseId">Curso</mfDefaultSorter>
         </th>
-        <th style="width: 20%"></th>
+        <th style="width: 125px;"></th>
       </tr>
     </thead>
     <tbody>
@@ -34,7 +34,7 @@
         <td>
           <a href="mailto:{{ student.email }}">{{ student.email }}</a>
         </td>
-        <td>{{ student.course }}</td>
+        <td>{{ student.courseId }}</td>
         <td>
           <a class="btn btn-light m-1" style="width: 40px;" routerLink="/editStudent/{{ student.id$ }}">
             <i class="fas fa-edit"></i>
