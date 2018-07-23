@@ -3,6 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { User } from '../../../../common/models/user';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ import { AuthenticationService } from '../../services/authentication.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  userdata: any;
+  user: User = new User();
 
   errorsForm = {
     email: '',
@@ -76,16 +77,9 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
-    this.userdata = this.saveUserdata();
-    this.authenticationService.registerUser(this.userdata);
+    this.user.email = this.registerForm.get('email').value;
+    this.user.password = this.registerForm.get('password').value;
+    this.authenticationService.registerUser(this.user);
   }
 
-  saveUserdata() {
-    const saveUserdata = {
-      email: this.registerForm.get('email').value,
-      password: this.registerForm.get('password').value
-    };
-
-    return saveUserdata;
-  }
 }

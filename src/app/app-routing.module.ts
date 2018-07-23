@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './common/components/home/home.component';
 import { RegisterComponent } from './modules/authentication/components/register/register.component';
 import { LoginComponent } from './modules/authentication/components/login/login.component';
+import { ResetPasswordComponent } from './modules/authentication/components/reset-password/reset-password.component';
 import { GuardService } from './modules/authentication/services/guard.service';
 import { ErrorPageComponent } from './common/components/error-page/error-page.component';
 import { StudentsComponent } from './modules/students/components/students/students.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'resetPass', component: ResetPasswordComponent },
   { path: 'home', component: HomeComponent, canActivate: [GuardService] },
   { path: 'students', component: StudentsComponent, canActivate: [GuardService] },
   { path: 'addStudent', component: AddStudentComponent, canActivate: [GuardService] },

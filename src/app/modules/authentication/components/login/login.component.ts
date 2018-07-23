@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthenticationService } from '../../services/authentication.service';
+import { User } from '../../../../common/models/user';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { AuthenticationService } from '../../services/authentication.service';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  userdata: any;
+  userdata: User = new User();
+  userId = '';
 
   message = false;
   authenticating = false;
@@ -36,23 +38,15 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authenticating = true;
     this.message = false;
-    this.userdata = this.saveUserdata();
-    this.authenticationService.initSession(this.userdata);
+    this.userdata.email = this.loginForm.get('email').value;
+    this.userdata.password = this.loginForm.get('password').value;
+    this.userdata.UID = this.authenticationService.initSession(this.userdata);
     setTimeout(() => {
       if (this.isAuth() === false) {
         this.message = true;
         this.authenticating = false;
       }
     }, 2000);
-  }
-
-  saveUserdata() {
-    const saveUserdata = {
-      email: this.loginForm.get('email').value,
-      password: this.loginForm.get('password').value
-    };
-
-    return saveUserdata;
   }
 
   isAuth() {

@@ -7,6 +7,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class AuthenticationService {
 
+  userId = '';
+
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router) { }
 
@@ -21,11 +23,13 @@ export class AuthenticationService {
     firebase.auth().signInWithEmailAndPassword(userdata.email, userdata.password)
       .then(response => {
         console.log(response);
+        this.userId = response.user.uid;
         this.router.navigate(['/home']);
       })
       .catch(error => {
         console.log(error);
       });
+    return this.userId;
   }
 
   isAuthenticated() {
@@ -39,6 +43,17 @@ export class AuthenticationService {
 
   logOut() {
     firebase.auth().signOut();
+  }
+
+  resetPassword(email: string) {
+    firebase.auth().sendPasswordResetEmail(email)
+      .then(response => {
+        console.log(response);
+        this.router.navigate(['/login']);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
 }
