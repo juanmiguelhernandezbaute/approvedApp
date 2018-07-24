@@ -14,6 +14,9 @@ export class AuthenticationService {
 
   registerUser(userdata) {
     firebase.auth().createUserWithEmailAndPassword(userdata.email, userdata.password)
+      .then (response => {
+        this.sendVerifyEmail(response.user);
+      })
       .catch(error => {
         console.log(error);
       });
@@ -23,18 +26,16 @@ export class AuthenticationService {
     firebase.auth().signInWithEmailAndPassword(userdata.email, userdata.password)
       .then(response => {
         console.log(response);
-        this.userId = response.user.uid;
         this.router.navigate(['/home']);
       })
       .catch(error => {
         console.log(error);
       });
-    return this.userId;
   }
 
   isAuthenticated() {
     const user = firebase.auth().currentUser;
-    if (user) {
+    if (user && user.emailVerified) {
       return true;
     } else {
       return false;
@@ -51,6 +52,13 @@ export class AuthenticationService {
         console.log(response);
         this.router.navigate(['/login']);
       })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  sendVerifyEmail(user: any) {
+    user.sendEmailVerification()
       .catch(error => {
         console.log(error);
       });

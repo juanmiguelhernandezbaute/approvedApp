@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     this.message = false;
     this.userdata.email = this.loginForm.get('email').value;
     this.userdata.password = this.loginForm.get('password').value;
-    this.userdata.UID = this.authenticationService.initSession(this.userdata);
+    this.authenticationService.initSession(this.userdata);
     setTimeout(() => {
       if (this.isAuth() === false) {
         this.message = true;
